@@ -6,6 +6,30 @@
 </template>
 
 <script>
+export default {
+  name: 'timer',
+  data() {
+    return {
+      time: 3,
+      interval: null
+    }
+  },
+  created: function() {
+    let self = this;
+    this.interval = setInterval(() =>{self.count()}, 1000);
+  },
+  methods: {
+    count: function() {
+      console.log(this.time)
+      if (this.time <= 0) {
+        clearInterval(this.interval);
+        document.location = "/#/wait"
+      } else {
+        this.time--;
+      }
+    }
+  }
+}
 </script>
 
 <style>

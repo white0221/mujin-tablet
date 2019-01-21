@@ -28,14 +28,7 @@ export default new Router({
     {
       path: '/complete',
       name: 'Complete',
-      component: PurchaseComplete,
-      beforeEnter: function (to, from, next) {
-        let count = 5
-        setInterval(function() {
-          next({path: '/'})
-        }, count*1000)
-        next()
-      }
+      component: PurchaseComplete
     },
     {
       path: '/select',
