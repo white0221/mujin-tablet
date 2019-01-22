@@ -1,9 +1,19 @@
-# mujin
+# mujin-tablet
 
 > A Vue.js project
 
 ## Build Setup
+### Docker
+```bash
+# build
+$ docker build -t mujin-tablet .
 
+# run
+$ docker run -it -p 9000:80 --rm --name mujin-tablet-app mujin-tablet
+```
+https://jp.vuejs.org/v2/cookbook/dockerize-vuejs-app.html
+
+### Local
 ``` bash
 # install dependencies
 npm install
