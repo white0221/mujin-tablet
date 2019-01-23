@@ -1,7 +1,15 @@
 <template>
   <div id="select">
-    Please select your name.
-    {{ info }}
+    <p>Please select your name.</p>
+    <div>
+      <table>
+        <tr v-for="user in users.user">
+          <td>{{ user.user_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>Button</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -10,18 +18,20 @@ export default {
   name: "getUserList",
   data() {
     return {
-      url: "http://localhost:3000/tablet/user/list",
-      users: [],
-      info: null
+      url: "",
+      users: null,
     }
   },
   mounted() {
-    axios
-      .get(this.url)
-      .then(response => (this.info = response))
+    axios.get(this.url)
+      .then(response => (this.users = response))
+      .catch(error => (this.users = error))
   }
 }
 </script>
 
 <style>
+p {
+  font-size: 20px;
+}
 </style>
