@@ -1,7 +1,7 @@
 <template>
   <div id="select">
     <p>Please select your name.</p>
-    <div>
+    <div v-show="dammy!=null">
       <table>
         <tr v-for="user in dammy.user">
           <td>{{ user.user_name }}</td>
