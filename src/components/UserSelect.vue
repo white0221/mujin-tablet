@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       url: "",
-      users: null,
+      users: null
     }
   },
   mounted() {
@@ -33,5 +33,26 @@ export default {
 <style>
 p {
   font-size: 20px;
+}
+
+table {
+  border: 2px solid black;
+  border-radius: 3px;
+  background-color: #fff;
+  margin: auto;
+}
+
+th {
+  background-color: #42b983;
+  color: rgba(255,255,255,0.66);
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+th, td {
+  min-width: 120px;
+  padding: 10px 20px;
 }
 </style>
