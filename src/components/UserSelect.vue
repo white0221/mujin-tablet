@@ -6,7 +6,7 @@
         <tr v-for="user in dammy.user">
           <td>{{ user.user_name }}</td>
           <td>{{ user.email }}</td>
-          <td>Button</td>
+          <td><button v-on:click="send">Me</button></td>
         </tr>
       </table>
     </div>
@@ -51,6 +51,11 @@ export default {
     axios.get(this.url)
       .then(response => (this.users = response))
       .catch(error => (this.users = null))
+  },
+  methods: {
+    send: function() {
+      console.log("Click!")
+    }
   }
 }
 </script>
