@@ -3,7 +3,7 @@
     <p>Please select your name.</p>
     <div>
       <table>
-        <tr v-for="user in users.user">
+        <tr v-for="user in dammy.user">
           <td>{{ user.user_name }}</td>
           <td>{{ user.email }}</td>
           <td>Button</td>
@@ -18,14 +18,36 @@ export default {
   name: "getUserList",
   data() {
     return {
-      url: "",
-      users: null
+      url: null,
+      users: null,
+      dammy: {
+        user: [
+          { 
+            id: 1,
+            user_name: "admin",
+            email: "admin@admin.com",
+            password_digest: "",
+            admin_flag: false,
+            created_at: "2019-01-22T07:50:47.000Z",
+            updated_at: "2019-01-22T07:50:47.000Z"
+          },
+          {
+            id: 2,
+            user_name: "user",
+            email: "user@user.com",
+            password_digest: "",
+            admin_flag: false,
+            created_at: "2019-01-23T12:40:31.000Z",
+            updated_at: "2019-01-23T12:40:31.000Z"
+          }
+        ]
+      }
     }
   },
   mounted() {
     axios.get(this.url)
       .then(response => (this.users = response))
-      .catch(error => (this.users = error))
+      .catch(error => (this.users = null))
   }
 }
 </script>
