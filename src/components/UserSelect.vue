@@ -10,6 +10,9 @@
         </tr>
       </table>
     </div>
+    <div v-show="dammy==null">
+      ユーザデータを読み込めませんでした。
+    </div>
   </div>
 </template>
 
