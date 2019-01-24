@@ -23,7 +23,7 @@ export default {
       console.log(this.time)
       if (this.time <= 0) {
         clearInterval(this.interval);
-        document.location = "/#/wait"
+        this.$router.push('/wait')
       } else {
         this.time--;
       }
