@@ -36,11 +36,20 @@ export default {
         console.log(this.pool)
         clearInterval(this.interval)
         this.pool = this.dammy
+        this.sendConfirm()
         // document.location = "/#/confirm"
         // confirmに遷移&confirmにデータ渡し
       }
+    },
+  
+    sendConfirm: function() {
+      this.$store.commit({
+        type: 'sendData',
+        purchase: this.pool
+        })
+      this.$router.push('/confirm')
     }
-  },
+  }
 }
 </script>
 
