@@ -15,9 +15,10 @@ export default {
       pool: null,
       dammy: {
         user_id: "1",
+        user_name: "Admin",
         items: [
-          { item_id: "1", volume: "1" },
-          { item_id: "5", volume: "1" }
+          { item_id: "1", item_name: "water", value: "100", volume: "1" },
+          { item_id: "5", item_name: "Potechi", value: "80", volume: "1" }
         ]
       }
     }
@@ -37,8 +38,6 @@ export default {
         clearInterval(this.interval)
         this.pool = this.dammy
         this.sendConfirm()
-        // document.location = "/#/confirm"
-        // confirmに遷移&confirmにデータ渡し
       }
     },
   
