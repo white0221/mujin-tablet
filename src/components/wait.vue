@@ -12,7 +12,14 @@ export default {
       waitTime: 1,
       interval: null,
       url: "",
-      pool: null
+      pool: null,
+      dammy: {
+        user_id: "1",
+        items: [
+          { item_id: "1", volume: "1" },
+          { item_id: "5", volume: "1" }
+        ]
+      }
     }
   },
   created: function() {
@@ -28,6 +35,7 @@ export default {
       if (this.pool != null) {
         console.log(this.pool)
         clearInterval(this.interval)
+        this.pool = this.dammy
         // document.location = "/#/confirm"
         // confirmに遷移&confirmにデータ渡し
       }
