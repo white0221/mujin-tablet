@@ -21,7 +21,7 @@ export default {
   name: "getUserList",
   data() {
     return {
-      url: null,
+      url: "http://3.16.85.64/tablet/user/list",
       users: null,
       dammy: {
         user: [
@@ -48,13 +48,14 @@ export default {
     }
   },
   mounted() {
-    axios.get(this.url)
-      .then(response => (this.users = response))
-      .catch(error => (this.users = null))
+    axios.get(this.url, { headers: { 'Content-Type': 'application/json' }})
+      .then(res => (console.log("get: "+res)))
+      .catch(err => (console.log("err: "+err)))
   },
   methods: {
     send: function() {
-      console.log("Click!")
+      // postでrailsにデータを送信
+      this.$router.push('/wait')
     }
   }
 }
