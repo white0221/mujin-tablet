@@ -1,16 +1,16 @@
 <template>
   <div id="select">
     <p>Please select your name.</p>
-    <div v-show="dammy!=null">
+    <div v-show="users!=null">
       <table>
-        <tr v-for="user in dammy.user">
+        <tr v-for="user in users.user">
           <td>{{ user.user_name }}</td>
           <td>{{ user.email }}</td>
-          <td><button v-on:click="send">Me</button></td>
+          <td><button v-on:click="send(user.id)">Me</button></td>
         </tr>
       </table>
     </div>
-    <div v-show="dammy==null">
+    <div v-show="users==null">
       ユーザデータを読み込めませんでした。
     </div>
   </div>
@@ -21,41 +21,20 @@ export default {
   name: "getUserList",
   data() {
     return {
-      url: "http://3.16.85.64/tablet/user/list",
-      users: null,
-      dammy: {
-        user: [
-          { 
-            id: 1,
-            user_name: "admin",
-            email: "admin@admin.com",
-            password_digest: "",
-            admin_flag: false,
-            created_at: "2019-01-22T07:50:47.000Z",
-            updated_at: "2019-01-22T07:50:47.000Z"
-          },
-          {
-            id: 2,
-            user_name: "user",
-            email: "user@user.com",
-            password_digest: "",
-            admin_flag: false,
-            created_at: "2019-01-23T12:40:31.000Z",
-            updated_at: "2019-01-23T12:40:31.000Z"
-          }
-        ]
-      }
+      url: "http://localhost:3000/tablet/user/list",
+      users: null
     }
   },
-  mounted() {
-    axios.get(this.url, { headers: { 'Content-Type': 'application/json' }})
-      .then(res => (console.log("get: "+res)))
+  created() {
+    axios.get(this.url)
+      .then(res => (this.users = res.data))
       .catch(err => (console.log("err: "+err)))
   },
   methods: {
-    send: function() {
+    send: function(user_id) {
       // postでrailsにデータを送信
-      this.$router.push('/wait')
+      console.log(user_id)
+      //this.$router.push('/wait')
     }
   }
 }
