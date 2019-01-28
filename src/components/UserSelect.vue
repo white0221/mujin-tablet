@@ -6,7 +6,7 @@
         <tr v-for="user in users.user">
           <td>{{ user.user_name }}</td>
           <td>{{ user.email }}</td>
-          <td><button v-on:click="send(user.id)">Me</button></td>
+          <td><button v-show="user.id!=0" v-on:click="send(user.id)">Me</button></td>
         </tr>
       </table>
     </div>
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       url: "http://localhost:3000/tablet/user/list",
-      users: null
+      users: { user:[{id: "0", user_name:"", email:"初期化中"}]}
     }
   },
   created() {
