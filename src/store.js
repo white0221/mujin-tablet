@@ -21,7 +21,9 @@ export default new Vuex.Store({
     // この場合呼び出すときは、
     // this.$store.commit('sendMessage', message);
     sendData(state, purchase_info) {
+      console.log(state.purchase)
       state.purchase = purchase_info.purchase
+      console.log(state.purchase)
     },
     setUserID(state, id) {
       state.purchase.user_id = id
