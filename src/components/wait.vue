@@ -9,17 +9,11 @@ export default {
   name: "wait",
   data() {
     return {
-      waitTime: 1,
+      waitTime: 5,
       interval: null,
-      url: "",
-      pool: null,
-      dammy: {
-        user_id: "1",
-        user_name: "Admin",
-        items: [
-          { item_id: "1", item_name: "water", value: "100", volume: "1" },
-          { item_id: "5", item_name: "Potechi", value: "80", volume: "1" }
-        ]
+      url: "http://localhost:5004/",
+      pool: {
+        data: null
       }
     }
   },
@@ -31,12 +25,10 @@ export default {
     getPool: function() {
       console.log("api access")
       axios.get(this.url)
-          .then(response => (this.pool = response))
-          .catch(error => (this.pool = error))
-      if (this.pool != null) {
-        console.log(this.pool)
+          .then(res => (this.pool = res))
+          .catch(err => (console.log(err)))
+      if (this.pool.data != null) {
         clearInterval(this.interval)
-        this.pool = this.dammy
         this.sendConfirm()
       }
     },
