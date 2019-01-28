@@ -32,9 +32,8 @@ export default {
   },
   methods: {
     send: function(user_id) {
-      // postでrailsにデータを送信
-      console.log(user_id)
-      //this.$router.push('/wait')
+      this.$store.commit("setUserID", user_id)
+      this.$router.push('/complete')
     }
   }
 }
