@@ -9,17 +9,11 @@ export default {
   name: "wait",
   data() {
     return {
-      waitTime: 1,
+      waitTime: 5,
       interval: null,
-      url: "",
-      pool: null,
-      dammy: {
-        user_id: "1",
-        user_name: "Admin",
-        items: [
-          { item_id: "1", item_name: "water", value: "100", volume: "1" },
-          { item_id: "5", item_name: "Potechi", value: "80", volume: "1" }
-        ]
+      url: "http://localhost:5004/",
+      pool: {
+        data: null
       }
     }
   },
