@@ -33,6 +33,7 @@ export default {
     },
     sendPurchaseData: function() {
       // axiosでrailsへpost
+      this.purchase["response_flag"] = true;
       axios.post(this.url, this.purchase)
         .then(res =>{console.log('send: '+res.data)})
         .catch(err =>{console.log(err)})
