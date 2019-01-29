@@ -31,12 +31,11 @@ export default {
         this.time--;
       }
     },
-    sendPurchaseData: function() {
+    sendPurchaseData: async function() {
       // axiosでrailsへpost
       this.purchase["response_flag"] = true;
-      axios.post(this.url, this.purchase)
-        .then(res =>{console.log('send: '+res.data)})
-        .catch(err =>{console.log(err)})
+      response = await axios.post(this.url, this.purchase)
+      console.log('send: '+response.data)
       // ストアのデータをリセット
       this.$store.commit({type: 'sendData', purchase: null})
     }
