@@ -31,16 +31,15 @@ export default {
     getPool: function() {
       console.log("api access")
       axios.get(this.url)
-          .then(response => (this.pool = response))
+          .then(response => {
+              this.pool = response.data;
+              if (this.pool != null) {
+                 clearInterval(this.interval);
+                 this.sendConfirm();
+              }
+          })
           .catch(error => (this.pool = error))
-      if (this.pool != null) {
-        console.log(this.pool)
-        clearInterval(this.interval)
-        this.pool = this.dammy
-        this.sendConfirm()
-      }
-    },
-  
+    },  
     sendConfirm: function() {
       this.$store.commit({
         type: 'sendData',
