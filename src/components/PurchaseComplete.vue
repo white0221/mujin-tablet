@@ -33,8 +33,13 @@ export default {
     },
     sendPurchaseData: async function() {
       // axiosでrailsへpost
-      this.purchase["response_flag"] = true;
-      response = await axios.post(this.url, this.purchase)
+      let request_json = {"history": {}};
+      request_json["history"]["user_id"] = this.purchase["user_id"];
+      request_json["history"]["history_details"] = this.purchase["items"];
+      request_json["response_flag"] = true;
+      console.log("post url :"+this.url);
+      console.log(request_json);
+      let response = await axios.post(this.url, request_json);
       console.log('send: '+response.data)
       // ストアのデータをリセット
       this.$store.commit({type: 'sendData', purchase: null})
