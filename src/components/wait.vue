@@ -22,17 +22,15 @@ export default {
     this.interval = setInterval(() =>{self.getPool()}, this.waitTime*1000);
   },
   methods: {
-    getPool: function() {
+    getPool: async function() {
       console.log("api access")
-      axios.get(this.url)
-          .then(res => (this.pool = res))
-          .catch(err => (console.log(err)))
-      if (this.pool.data != null) {
-        clearInterval(this.interval)
-        this.sendConfirm()
+      let response = await axios.get(this.url);
+      this.pool = response.data;
+      if (this.pool != null) {
+        clearInterval(this.interval);
+        this.sendConfirm();
       }
-    },
-  
+    },  
     sendConfirm: function() {
       this.$store.commit({
         type: 'sendData',
